@@ -13,12 +13,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 const rooms = {};
 
 function createStockfish() {
-  const sfBin = require('path').join(__dirname, 'node_modules/stockfish/bin/stockfish.js');
-  const sf = spawn('node', [sfBin]);
-  sf.stdin.write('uci\n');
-  sf.stdin.write('isready\n');
-  console.log('Stockfish avviato');
-  return sf;
+  try {
+    const sfBin = require('path').join(__dirname, 'node_modules/stockfish/bin/stockfish.js');
+    const sf = spawn('node', [sfBin]);
+    sf.on('error', function(e) { console.log('Stockfish error:', e.message); });
+    sf.stdin.write('uci\n');
+    sf.stdin.write('isready\n');
+    console.log('Stockfish avviato');
+    return sf;
+  } catch(e) {
+    console.log('Stockfish non disponibile:', e.message);
+    return null;
+  }
 }
 
 function askStockfish(sf, fen, depth, callback) {
