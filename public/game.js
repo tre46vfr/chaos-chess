@@ -93,8 +93,6 @@ function execMove(fr,fc,tr,tc,chaosResult,promo){
 }
 
 function applyOpponentMove(move){
-  var b=G.b;
-  if(move.chaos){var opp=MY_COLOR==='w'?'b':'w';for(var r=0;r<8;r++)for(var c=0;c<8;c++){var p=b[r][c];if(p&&p.col===opp&&p.t!=='K'&&!(r===move.tr&&c===move.tc))b[r][c]=null;}}
   execMove(move.fr,move.fc,move.tr,move.tc,move.chaos||[],move.promo||null);
 }
 
