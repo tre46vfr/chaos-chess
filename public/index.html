@@ -63,13 +63,6 @@ input:focus{border-color:#c9a84c}
   <h2>Gioca vs Umano</h2>
   <button class="btn primary" onclick="createRoom('pvp')">⚔️ Crea partita vs Umano</button>
   <hr class="divider">
-  <h2>Gioca vs Stockfish</h2>
-  <div class="deprow">
-    <button class="btn active" id="dep1" onclick="setDepUI(1,this)">Easy</button>
-    <button class="btn" id="dep2" onclick="setDepUI(10,this)">Med</button>
-    <button class="btn" id="dep3" onclick="setDepUI(18,this)">Hard</button>
-  </div>
-  <button class="btn" onclick="createRoom('engine')">🤖 Gioca vs Stockfish</button>
   <hr class="divider">
   <h2>Unisciti a una partita</h2>
   <input type="text" id="room-input" placeholder="Inserisci codice stanza..." maxlength="6" oninput="this.value=this.value.toUpperCase()">
