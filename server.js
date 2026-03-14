@@ -13,7 +13,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 const rooms = {};
 
 function createStockfish() {
-  const sf = spawn('/opt/homebrew/bin/stockfish');
+  const sfBin = require('path').join(__dirname, 'node_modules/stockfish/bin/stockfish.js');
+  const sf = spawn('node', [sfBin]);
   sf.stdin.write('uci\n');
   sf.stdin.write('isready\n');
   console.log('Stockfish avviato');
